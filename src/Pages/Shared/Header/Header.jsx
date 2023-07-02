@@ -3,9 +3,11 @@ import ActiveLinks from "../../../components/ActiveLinks/ActiveLinks";
 import { ImSearch } from "react-icons/im";
 import ProductSearch from "../../../components/ProductSearch/ProductSearch";
 import { useState } from "react";
-
+import useExProvider from "../../../hooks/useExProvider";
+import logo from "/shop-ex-logo.svg";
 const Header = () => {
   const [searchStatus, setSearchStatus] = useState(false);
+  const { user } = useExProvider();
   const navLink = (
     <>
       <ActiveLinks to="/">Home</ActiveLinks>
@@ -14,7 +16,7 @@ const Header = () => {
   );
   return (
     <header>
-      <div className="bz-container">
+      <div className="ex-container">
         <div className="navbar bg-base-100 font-inter">
           <div className="navbar-start">
             <div className="dropdown">
@@ -42,11 +44,7 @@ const Header = () => {
               </ul>
             </div>
             <Link to="/">
-              <img
-                src="https://i.ibb.co/hKDg5F6/logo-main.png"
-                alt="Logo"
-                className="w-32 btn btn-ghost"
-              />
+              <img src={logo} alt="Logo" className="w-32 btn btn-ghost" />
             </Link>
           </div>
           <div className="navbar-center hidden lg:flex">
@@ -76,7 +74,53 @@ const Header = () => {
               >
                 <ImSearch className="w-5 h-5" />
               </li>
-              <li>A</li>
+              <li className="">
+                {user ? (
+                  //starting
+                  <div className="dropdown dropdown-end">
+                    <label
+                      tabIndex={0}
+                      className="btn btn-ghost btn-circle avatar"
+                    >
+                      <div className="w-12 rounded-full">
+                        <img
+                          className="rounded-full"
+                          src={
+                            user.photoURL
+                              ? user.photoURL
+                              : "https://i.ibb.co/rvRhzBn/empty-user.png"
+                          }
+                          alt="User profile"
+                        />
+                      </div>
+                    </label>
+                    <ul
+                      tabIndex={0}
+                      className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52 font-inter"
+                    >
+                      <li>
+                        <a>Profile</a>
+                      </li>
+                      <li>
+                        <a>Settings</a>
+                      </li>
+                      <li>
+                        <a>Logout</a>
+                      </li>
+                    </ul>
+                  </div>
+                ) : (
+                  // end
+                  <>
+                    <Link
+                      to="login"
+                      className="btn ring-1 ring-slate-300 normal-case btn-sm"
+                    >
+                      Login
+                    </Link>
+                  </>
+                )}
+              </li>
             </ul>
           </div>
         </div>

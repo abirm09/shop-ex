@@ -3,6 +3,23 @@
 @tailwind utilities;
 
 /* custom classes */
-.bz-container {
+.ex-container {
   @apply max-w-7xl mx-auto px-3
+}
+
+.ex-btn-primary {
+  @apply btn bg-red-400 font-inter normal-case text-slate-100
+}
+
+.ex-form {
+  @apply w-full outline-none py-3 px-2 bg-transparent ring-1 ring-slate-200 rounded-lg
+}
+
+.active-link:focus {
+  background-color: transparent !important;
+  color: #0e7490 !important;
+}
+
+.form-validate-error {
+  @apply text-red-700 font-bold font-bold
 }

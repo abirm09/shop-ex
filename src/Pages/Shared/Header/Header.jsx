@@ -4,10 +4,13 @@ import { ImSearch } from "react-icons/im";
 import ProductSearch from "../../../components/ProductSearch/ProductSearch";
 import { useState } from "react";
 import useExProvider from "../../../hooks/useExProvider";
+import { AiFillSetting } from "react-icons/ai";
+import { FaShoppingCart, FaSignOutAlt } from "react-icons/fa";
+import { IoAnalyticsOutline } from "react-icons/io5";
 import logo from "/shop-ex-logo.svg";
 const Header = () => {
   const [searchStatus, setSearchStatus] = useState(false);
-  const { user } = useExProvider();
+  const { user, logOutUser } = useExProvider();
   const navLink = (
     <>
       <ActiveLinks to="/">Home</ActiveLinks>
@@ -96,16 +99,46 @@ const Header = () => {
                     </label>
                     <ul
                       tabIndex={0}
-                      className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52 font-inter"
+                      className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52 font-inter space-y-1 font-semibold"
                     >
                       <li>
-                        <a>Profile</a>
+                        <img
+                          className="w-10 p-0 rounded-full mx-auto"
+                          src={
+                            user.photoURL
+                              ? user.photoURL
+                              : "https://i.ibb.co/rvRhzBn/empty-user.png"
+                          }
+                          alt="User profile pic"
+                        />
+                        <h4 className="font-bold pointer-events-none justify-center">
+                          {user.displayName}
+                        </h4>
+                        <h5 className="text-xs pointer-events-none justify-center">
+                          {user.email}
+                        </h5>
                       </li>
                       <li>
-                        <a>Settings</a>
+                        <a>
+                          <AiFillSetting /> Settings
+                        </a>
                       </li>
                       <li>
-                        <a>Logout</a>
+                        <a>
+                          <FaShoppingCart /> Cart
+                        </a>
+                      </li>
+                      <li>
+                        <a>
+                          <IoAnalyticsOutline /> Dashboard
+                        </a>
+                      </li>
+                      <hr />
+                      <li onClick={() => logOutUser()}>
+                        <a>
+                          {" "}
+                          <FaSignOutAlt /> Logout
+                        </a>
                       </li>
                     </ul>
                   </div>

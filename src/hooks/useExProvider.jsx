@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import { ExProvider } from "../Provider/ShopExProvider/ShopExProvider";
+import { ExContext } from "../Provider/ShopExProvider/ShopExProvider";
 
 const useExProvider = () => {
-  const data = useContext(ExProvider);
+  const data = useContext(ExContext);
   return data;
 };
 

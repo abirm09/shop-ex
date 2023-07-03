@@ -145,7 +145,10 @@ const Register = () => {
         </form>
         <div className="font-inter text-center py-2">
           <span>Already have an account ?</span>
-          <Link to="/login"> Login</Link>
+          <Link to="/login" className="text-cyan-700">
+            {" "}
+            Login
+          </Link>
         </div>
         <div className="divider font-inter">OR</div>
         <span className="text-center block font-inter">Continue with </span>

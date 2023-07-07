@@ -9,6 +9,7 @@ import {
 } from "firebase/auth";
 import app from "../../Util/Firebase/Firebase.config";
 export const ExContext = createContext();
+export const BaseUrl = "http://localhost:5000";
 const ShopExProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -25,7 +26,7 @@ const ShopExProvider = ({ children }) => {
   };
 
   //log out user
-  const logOutUser = () => {
+  const logOutUser = async () => {
     return signOut(auth)
       .then()
       .catch(err => console.log(err));
@@ -35,6 +36,8 @@ const ShopExProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, currentUser => {
       setUser(currentUser);
       setLoading(false);
+      // if (currentUser.email) {
+      // }
     });
     return () => {
       return unsubscribe;

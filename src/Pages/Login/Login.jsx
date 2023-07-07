@@ -11,6 +11,7 @@ import useExProvider from "../../hooks/useExProvider";
 const Login = () => {
   const { emailPassLogin } = useExProvider();
   const [disabled, setDisabled] = useState(true);
+  const [loginLoading, setLoginLoading] = useState(false);
   const [loginErr, setLoginErr] = useState("");
   const navigate = useNavigate();
   useEffect(() => {
@@ -26,16 +27,18 @@ const Login = () => {
   };
   const handleLogin = event => {
     event.preventDefault();
+    setLoginLoading(true);
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
     emailPassLogin(email, password)
       .then(() => {
+        setLoginLoading(false);
         navigate("/");
       })
       .catch(err => {
         setLoginErr(err.message.split("/")[1].replace(")", ""));
-
+        setLoginLoading(false);
         console.log(err);
       });
   };
@@ -72,10 +75,10 @@ const Login = () => {
           )}
           <input
             type="submit"
-            value="Login"
+            value={loginLoading ? "Logging in..." : "Log in"}
             className="block btn w-full ring-1 ring-slate-300"
             // TODO: make the value dynamic
-            disabled={false}
+            disabled={loginLoading}
             // disabled={disabled}
           />
         </form>

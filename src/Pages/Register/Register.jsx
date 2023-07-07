@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet-async";
 import { useState } from "react";
 import useExProvider from "../../hooks/useExProvider";
 import { updateProfile } from "firebase/auth";
+import { BaseUrl } from "../../Provider/ShopExProvider/ShopExProvider";
 
 const Register = () => {
   const [registerLoading, setRegisterLoading] = useState(false);
@@ -23,6 +24,21 @@ const Register = () => {
         //TODO : save user info to db.
         const user = res.user;
         setRegisterLoading(false);
+        console.log(data);
+        const userInfo = {
+          name: data.name,
+          profilePic: data.profilePic,
+          profileDelete: data.profilePicDelete,
+          email: user.email,
+        };
+        console.log(userInfo);
+        fetch(`${BaseUrl}/store-user`, {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(userInfo),
+        });
         updateUser(user, data.name, data.profilePic)
           .then(() => {
             navigate("/");
@@ -60,9 +76,14 @@ const Register = () => {
         .then(res => res.json())
         .then(imgInfo => {
           data.profilePic = imgInfo.data.display_url;
+          data.profilePicDelete = imgInfo.data.delete_url;
+          console.log(imgInfo);
           registerUser(data);
         })
-        .catch(err => console.log(err));
+        .catch(err => {
+          console.log(err);
+          setRegisterLoading(false);
+        });
     } else {
       registerUser(data);
     }

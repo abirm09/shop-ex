@@ -36,11 +36,18 @@ const ShopExProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, currentUser => {
       setUser(currentUser);
       setLoading(false);
-      // if (currentUser.email) {
-      // }
+      if (currentUser?.email) {
+        const url = `${BaseUrl}/jwt?email=${currentUser.email}`;
+        fetch(url)
+          .then(res => res.json())
+          .then(data => {
+            localStorage.setItem("access_token", data.token);
+          })
+          .catch(err => console.log(err));
+      }
     });
     return () => {
-      return unsubscribe;
+      return unsubscribe();
     };
   }, [auth]);
   const data = {

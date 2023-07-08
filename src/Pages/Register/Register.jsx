@@ -21,7 +21,6 @@ const Register = () => {
   const registerUser = data => {
     emailPassCreation(data.email, data.password)
       .then(res => {
-        //TODO : save user info to db.
         const user = res.user;
         setRegisterLoading(false);
         console.log(data);

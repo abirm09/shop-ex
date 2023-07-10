@@ -23,14 +23,12 @@ const Register = () => {
       .then(res => {
         const user = res.user;
         setRegisterLoading(false);
-        console.log(data);
         const userInfo = {
           name: data.name,
           profilePic: data.profilePic,
           profileDelete: data.profilePicDelete,
           email: user.email,
         };
-        console.log(userInfo);
         fetch(`${BaseUrl}/store-user`, {
           method: "POST",
           headers: {
@@ -56,7 +54,7 @@ const Register = () => {
     //password match
     if (data.password !== data.re_enter_pass) {
       setPassMatchErr("Password did not math.");
-      setPassMatchErr(false);
+      setRegisterLoading(false);
       return;
     }
     //image upload
@@ -76,7 +74,6 @@ const Register = () => {
         .then(imgInfo => {
           data.profilePic = imgInfo.data.display_url;
           data.profilePicDelete = imgInfo.data.delete_url;
-          console.log(imgInfo);
           registerUser(data);
         })
         .catch(err => {

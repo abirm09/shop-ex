@@ -8,13 +8,24 @@ import { AiFillSetting } from "react-icons/ai";
 import { FaShoppingCart, FaSignOutAlt } from "react-icons/fa";
 import { IoAnalyticsOutline } from "react-icons/io5";
 import logo from "/shop-ex-logo.svg";
+import useRole from "../../../hooks/useRole";
 const Header = () => {
   const [searchStatus, setSearchStatus] = useState(false);
   const { user, logOutUser } = useExProvider();
+  const { role } = useRole();
   const navLink = (
     <>
       <ActiveLinks to="/">Home</ActiveLinks>
       <ActiveLinks to="/category">Category</ActiveLinks>
+    </>
+  );
+  const customerLinks = (
+    <>
+      <li>
+        <Link to="/cart">
+          <FaShoppingCart /> Cart
+        </Link>
+      </li>
     </>
   );
   return (
@@ -119,15 +130,11 @@ const Header = () => {
                         </h5>
                       </li>
                       <li>
-                        <a>
+                        <Link to="/accounts/settings">
                           <AiFillSetting /> Settings
-                        </a>
+                        </Link>
                       </li>
-                      <li>
-                        <a>
-                          <FaShoppingCart /> Cart
-                        </a>
-                      </li>
+                      {role === "customer" ? customerLinks : ""}
                       <li>
                         <a>
                           <IoAnalyticsOutline /> Dashboard

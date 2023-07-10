@@ -29,4 +29,5 @@ export const useAxiosSecure = () => {
       }
     );
   }, [navigate, logOutUser]);
+  return { axiosSecure };
 };

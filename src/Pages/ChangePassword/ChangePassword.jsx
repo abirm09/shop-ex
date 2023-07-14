@@ -2,6 +2,7 @@ import { useState } from "react";
 import useExProvider from "../../hooks/useExProvider";
 import { updatePassword } from "firebase/auth";
 import { Toaster, toast } from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
 
 const ChangePassword = () => {
   const [passErr, setPassErr] = useState("");
@@ -24,6 +25,9 @@ const ChangePassword = () => {
   };
   return (
     <>
+      <Helmet>
+        <title>Change password | Shop-Ex</title>
+      </Helmet>
       <div>
         <h2 className="my-3 font-inter">Change your password</h2>
         <form className="space-y-5 max-w-xl" onSubmit={handlePassUpdate}>

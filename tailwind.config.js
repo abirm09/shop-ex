@@ -5,6 +5,8 @@ export default {
     extend: {
       fontFamily: {
         inter: ["Inter", "sans-serif"],
+        concert: ["Concert One", "cursive"],
+        knewave: ["Knewave", "cursive"],
       },
     },
   },

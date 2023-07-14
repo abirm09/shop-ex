@@ -2,6 +2,7 @@ import { deleteUser } from "firebase/auth";
 import useExProvider from "../../hooks/useExProvider";
 import Swal from "sweetalert2";
 import { useAxiosSecure } from "../../hooks/useAxiosSecure";
+import { Helmet } from "react-helmet-async";
 const DeleteAccount = () => {
   const { user } = useExProvider();
   const { axiosSecure } = useAxiosSecure();
@@ -44,21 +45,26 @@ const DeleteAccount = () => {
     });
   };
   return (
-    <div>
-      <img
-        className="rounded-full w-20 h-20"
-        src={
-          user.photoURL
-            ? user.photoURL
-            : "https://i.ibb.co/rvRhzBn/empty-user.png"
-        }
-        alt="User profile"
-      />
-      <h2 className="font-inter font-semibold mt-5">{user.displayName}</h2>
-      <button className="btn btn-accent mt-3 btn-xs" onClick={handleDelete}>
-        Delete Your account
-      </button>
-    </div>
+    <>
+      <Helmet>
+        <title>Delete account | Shop-Ex</title>
+      </Helmet>
+      <div>
+        <img
+          className="rounded-full w-20 h-20"
+          src={
+            user.photoURL
+              ? user.photoURL
+              : "https://i.ibb.co/rvRhzBn/empty-user.png"
+          }
+          alt="User profile"
+        />
+        <h2 className="font-inter font-semibold mt-5">{user.displayName}</h2>
+        <button className="btn btn-accent mt-3 btn-xs" onClick={handleDelete}>
+          Delete Your account
+        </button>
+      </div>
+    </>
   );
 };
 

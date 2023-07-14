@@ -10,6 +10,10 @@ import ChangePassword from "../../Pages/ChangePassword/ChangePassword";
 import Error404 from "../../Pages/Error404/Error404";
 import PrivateRoutes from "../PrivateRoutes/PrivateRoutes";
 import DeleteAccount from "../../Pages/DeleteAccount/DeleteAccount";
+import BecomeASeller from "../../Pages/BecomeASeller/BecomeASeller";
+import Dashboard from "../../Layouts/Dashboard";
+import Welcome from "../../Pages/Dashboard/Welcome/Welcome";
+import AddProduct from "../../Pages/Dashboard/Seller/AddProduct/AddProduct";
 
 const routes = createBrowserRouter([
   {
@@ -55,6 +59,28 @@ const routes = createBrowserRouter([
         path: "delete-account",
         element: <DeleteAccount />,
       },
+      {
+        path: "become-a-seller",
+        element: <BecomeASeller />,
+      },
+    ],
+  },
+  {
+    path: "/dashboard",
+    element: (
+      <PrivateRoutes>
+        <Dashboard />
+      </PrivateRoutes>
+    ),
+    children: [
+      {
+        path: "welcome",
+        element: <Welcome />,
+      },
+      {
+        path:"add-new-product",
+        element:<AddProduct/>
+      }
     ],
   },
 ]);

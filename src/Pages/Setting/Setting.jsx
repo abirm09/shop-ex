@@ -6,6 +6,7 @@ import Lottie from "lottie-react";
 import loadingAnim from "../../assets/loading/loading-anim-2.json";
 import { useAxiosSecure } from "../../hooks/useAxiosSecure";
 import { Toaster, toast } from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
 
 const Setting = () => {
   const { user } = useExProvider();
@@ -71,6 +72,9 @@ const Setting = () => {
   };
   return (
     <>
+      <Helmet>
+        <title>Profile | Shop-Ex</title>
+      </Helmet>
       <div>
         <button
           className={`w-16 h-16 rounded-full ring-1 ring-slate-300 bg-cover relative overflow-hidden group active:scale-95`}
@@ -79,7 +83,7 @@ const Setting = () => {
           <img
             src={user?.photoURL}
             alt="User photo"
-            className="w-16 h-16 rounded-full absolute top-0 left-0 z-0"
+            className="w-16 h-16 rounded-full absolute top-0 left-0 z-0 object-cover"
           />
           <div className="w-full h-2/4 bg-slate-200/60 absolute -bottom-2/4 group-hover:bottom-0 transition-all flex justify-center items-center z-10">
             <AiFillCamera />

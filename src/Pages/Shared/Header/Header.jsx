@@ -22,14 +22,14 @@ const Header = () => {
   const customerLinks = (
     <>
       <li>
-        <Link to="/cart">
-          <FaShoppingCart /> Cart
+        <Link to="/dashboard/cart">
+          <FaShoppingCart /> Cart <div className="badge badge-ghost"></div>
         </Link>
       </li>
     </>
   );
   return (
-    <header>
+    <header className="z-50">
       <div className="ex-container">
         <div className="navbar bg-base-100 font-inter">
           <div className="navbar-start">
@@ -52,7 +52,7 @@ const Header = () => {
               </label>
               <ul
                 tabIndex={0}
-                className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 font-semibold"
+                className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 font-semibold z-50"
               >
                 {navLink}
               </ul>
@@ -110,11 +110,11 @@ const Header = () => {
                     </label>
                     <ul
                       tabIndex={0}
-                      className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52 font-inter space-y-1 font-semibold"
+                      className="mt-3 p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52 font-inter space-y-1 font-semibold z-50"
                     >
                       <li>
                         <img
-                          className="w-10 p-0 rounded-full mx-auto"
+                          className="w-10 h-10 p-0 rounded-full mx-auto object-cover"
                           src={
                             user.photoURL
                               ? user.photoURL
@@ -136,9 +136,9 @@ const Header = () => {
                       </li>
                       {role === "customer" ? customerLinks : ""}
                       <li>
-                        <a>
+                        <Link to="/dashboard/welcome">
                           <IoAnalyticsOutline /> Dashboard
-                        </a>
+                        </Link>
                       </li>
                       <hr />
                       <li onClick={() => logOutUser()}>

@@ -29,21 +29,21 @@ const Accounts = () => {
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
           <ul className="menu p-4 w-80 h-full bg-base-100 text-base-content font-inter font-semibold">
             {/* Sidebar content here */}
-            <ActiveLinks to="/">
-              <FaHome /> Back to home
-            </ActiveLinks>
+
             <ActiveLinks to="/accounts/settings">
               <AiOutlineUser /> Profile Settings
             </ActiveLinks>
             <ActiveLinks to="/accounts/change-password">
               <FaShieldAlt /> Change password
             </ActiveLinks>
-            <ActiveLinks to="/accounts/become-a-seller">
-              <FaUserPlus /> Become a seller
+            <ActiveLinks to="/">
+              <FaHome /> Back to home
             </ActiveLinks>
-
             {role === "customer" ? (
               <>
+                <ActiveLinks to="/accounts/become-a-seller">
+                  <FaUserPlus /> Become a seller
+                </ActiveLinks>
                 <hr className="my-3" />
                 <ActiveLinks to="delete-account">
                   <AiOutlineDelete /> Delete Your Account

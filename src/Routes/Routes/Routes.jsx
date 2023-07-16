@@ -14,6 +14,8 @@ import BecomeASeller from "../../Pages/BecomeASeller/BecomeASeller";
 import Dashboard from "../../Layouts/Dashboard";
 import Welcome from "../../Pages/Dashboard/Welcome/Welcome";
 import AddProduct from "../../Pages/Dashboard/Seller/AddProduct/AddProduct";
+import AllAddedProducts from "../../Pages/Dashboard/Seller/AllAddedProducts/AllAddedProducts";
+import EditProduct from "../../Pages/Dashboard/Seller/EditProduct/EditProduct";
 
 const routes = createBrowserRouter([
   {
@@ -78,9 +80,17 @@ const routes = createBrowserRouter([
         element: <Welcome />,
       },
       {
-        path:"add-new-product",
-        element:<AddProduct/>
-      }
+        path: "add-new-product",
+        element: <AddProduct />,
+      },
+      {
+        path: "added-products",
+        element: <AllAddedProducts />,
+      },
+      {
+        path: "update-products/:id",
+        element: <EditProduct />,
+      },
     ],
   },
 ]);

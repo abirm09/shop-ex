@@ -16,6 +16,7 @@ import Welcome from "../../Pages/Dashboard/Welcome/Welcome";
 import AddProduct from "../../Pages/Dashboard/Seller/AddProduct/AddProduct";
 import AllAddedProducts from "../../Pages/Dashboard/Seller/AllAddedProducts/AllAddedProducts";
 import EditProduct from "../../Pages/Dashboard/Seller/EditProduct/EditProduct";
+import InitialCheckProducts from "../../Pages/Dashboard/Staff/Initial-check-products/InitialCheckProducts";
 
 const routes = createBrowserRouter([
   {
@@ -90,6 +91,11 @@ const routes = createBrowserRouter([
       {
         path: "update-products/:id",
         element: <EditProduct />,
+      },
+      //staff
+      {
+        path: "initial-check-products",
+        element: <InitialCheckProducts />,
       },
     ],
   },

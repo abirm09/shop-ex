@@ -6,6 +6,7 @@ import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router-dom";
+import BackButton from "../../../../components/BackButton/BackButton";
 
 const AllAddedProducts = () => {
   const navigate = useNavigate();
@@ -65,6 +66,7 @@ const AllAddedProducts = () => {
       <Helmet>
         <title>Added products | Shop-Ex</title>
       </Helmet>
+      <BackButton />
       <div className="overflow-x-scroll">
         <table className="table table-zebra font-inter font-semibold">
           {/* head */}

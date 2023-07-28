@@ -35,9 +35,9 @@ const EditProduct = () => {
   return (
     <>
       <Helmet>
-        <title>
+        {/* <title>
           Update Product - {currentProduct?.product_info?.name} | Shop-Ex
-        </title>
+        </title> */}
       </Helmet>
       <form
         onSubmit={handleSubmit(onSubmit)}

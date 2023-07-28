@@ -55,7 +55,7 @@ const Welcome = () => {
             ""
           )}
         </div>
-        <div className="col-span-1 md:col-span-2 flex justify-center gap-5">
+        <div className="col-span-1 md:col-span-2 flex justify-center gap-5 flex-wrap">
           {role === "customer" ? (
             ""
           ) : role === "seller" ? (

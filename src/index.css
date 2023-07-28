@@ -52,7 +52,7 @@
 }
 
 .ex-btn {
-  @apply rounded-full py-2 px-5 font-inter font-semibold cursor-pointer
+  @apply rounded-full py-2 px-5 font-inter font-semibold cursor-pointer select-none
 }
 
 .ex-btn-primary {

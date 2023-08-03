@@ -9,10 +9,11 @@ import { FaShoppingCart, FaSignOutAlt } from "react-icons/fa";
 import { IoAnalyticsOutline } from "react-icons/io5";
 import logo from "/shop-ex-logo.svg";
 import useRole from "../../../hooks/useRole";
+import Loading from "../../Loading/Loading";
 const Header = () => {
   const [searchStatus, setSearchStatus] = useState(false);
   const { user, logOutUser } = useExProvider();
-  const { role } = useRole();
+  const { role, isRoleLoading } = useRole();
   const navLink = (
     <>
       <ActiveLinks to="/">Home</ActiveLinks>
@@ -28,6 +29,9 @@ const Header = () => {
       </li>
     </>
   );
+  if (isRoleLoading) {
+    return <Loading />;
+  }
   return (
     <header className="z-50">
       <div className="ex-container">

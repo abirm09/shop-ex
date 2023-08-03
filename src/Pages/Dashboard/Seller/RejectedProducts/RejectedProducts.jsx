@@ -25,7 +25,6 @@ const RejectedProducts = () => {
         }
       },
     });
-  console.log(rejectedProducts);
   //correction done
   const handleCorrectionDone = async id => {
     try {
@@ -46,55 +45,63 @@ const RejectedProducts = () => {
         <title>Rejected products | Shop-Ex</title>
       </Helmet>
       <BackButton />
-      <div className="overflow-x-auto">
-        <table className="table font-inter">
-          {/* head */}
-          <thead>
-            <tr>
-              <th></th>
-              <th>Product name</th>
-              <th>Image</th>
-              <th>Rejected staff</th>
-              <th>Reason</th>
-              <th>Edit</th>
-              <th>Correction done</th>
-            </tr>
-          </thead>
-          <tbody>
-            {rejectedProducts.map((item, index) => (
-              <tr key={item._id}>
-                <td>{index + 1}</td>
-                <td>{item.product_info.name}</td>
-                <td>
-                  <img
-                    src={item.product_info.images[0]}
-                    alt={item.product_info.name}
-                    className="w-10 h-10"
-                  />
-                </td>
-                <td>{item.rejected_by.staffEmail}</td>
-                <td>{item.rejected_reason}</td>
-                <td>
-                  <Link
-                    to={`/dashboard/update-products/${item._id}`}
-                    className=""
-                  >
-                    <BiEditAlt className="w-6 h-6" />
-                  </Link>
-                </td>
-                <td>
-                  <button
-                    onClick={() => handleCorrectionDone(item._id)}
-                    title="Correction done"
-                  >
-                    <TiInputChecked className="w-7 h-7" />
-                  </button>
-                </td>
+      {rejectedProducts.length ? (
+        <div className="overflow-x-auto">
+          <table className="table font-inter">
+            {/* head */}
+            <thead>
+              <tr>
+                <th></th>
+                <th>Product name</th>
+                <th>Image</th>
+                <th>Rejected staff</th>
+                <th>Reason</th>
+                <th>Edit</th>
+                <th>Correction done</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+            </thead>
+            <tbody>
+              {rejectedProducts.map((item, index) => (
+                <tr key={item._id}>
+                  <td>{index + 1}</td>
+                  <td>{item.product_info.name}</td>
+                  <td>
+                    <img
+                      src={item.product_info.images[0]}
+                      alt={item.product_info.name}
+                      className="w-10 h-10"
+                    />
+                  </td>
+                  <td>{item.rejected_by.staffEmail}</td>
+                  <td className="text-red-700 font-bold">
+                    {item.rejected_reason}
+                  </td>
+                  <td>
+                    <Link
+                      to={`/dashboard/update-products/${item._id}`}
+                      className=""
+                    >
+                      <BiEditAlt className="w-6 h-6" />
+                    </Link>
+                  </td>
+                  <td>
+                    <button
+                      onClick={() => handleCorrectionDone(item._id)}
+                      title="Correction done"
+                    >
+                      <TiInputChecked className="w-7 h-7" />
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      ) : (
+        <h2 className="text-center text-green-700 font-inter font-bold ">
+          Currently You do not have any rejected products.
+        </h2>
+      )}
       <Toaster position="top-center" reverseOrder={false} />
     </>
   );

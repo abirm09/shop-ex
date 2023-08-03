@@ -18,6 +18,7 @@ import AllAddedProducts from "../../Pages/Dashboard/Seller/AllAddedProducts/AllA
 import EditProduct from "../../Pages/Dashboard/Seller/EditProduct/EditProduct";
 import InitialCheckProducts from "../../Pages/Dashboard/Staff/Initial-check-products/InitialCheckProducts";
 import RejectedProducts from "../../Pages/Dashboard/Seller/RejectedProducts/RejectedProducts";
+import ApproveProducts from "../../Pages/Dashboard/Admin/ApproveProducts/ApproveProducts";
 
 const routes = createBrowserRouter([
   {
@@ -101,6 +102,11 @@ const routes = createBrowserRouter([
       {
         path: "initial-check-products",
         element: <InitialCheckProducts />,
+      },
+      //admin
+      {
+        path: "approve-product",
+        element: <ApproveProducts />,
       },
     ],
   },

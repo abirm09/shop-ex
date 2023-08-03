@@ -7,12 +7,13 @@ import Seller from "./Seller";
 import SellerInfo from "../../../components/SellerInfo/SellerInfo";
 import StaffInfo from "../../../components/StaffInfo/StaffInfo";
 import Staff from "./Staff";
+import Admin from "./Admin";
+import AdminInfo from "../../../components/AdminInfo/AdminInfo";
 
 const Welcome = () => {
   const { user } = useExProvider();
   const { role } = useRole();
   const { axiosSecure } = useAxiosSecure();
-
   return (
     <>
       <Helmet>
@@ -51,6 +52,8 @@ const Welcome = () => {
               {/* =============================Staff links=========================== */}
               <StaffInfo user={user} axiosSecure={axiosSecure} />
             </>
+          ) : role === "admin" ? (
+            <AdminInfo user={user} axiosSecure={axiosSecure} />
           ) : (
             ""
           )}
@@ -62,6 +65,8 @@ const Welcome = () => {
             <Seller />
           ) : role === "staff" ? (
             <Staff />
+          ) : role === "admin" ? (
+            <Admin />
           ) : (
             "Something went wrong"
           )}

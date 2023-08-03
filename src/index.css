@@ -60,7 +60,7 @@
 }
 
 .dashboard-info-box {
-  @apply ring-1 ring-slate-200 m-2 max-w-[180px] w-full p-5 h-24 flex justify-center items-center text-center font-semibold rounded-lg shadow-md bg-white
+  @apply ring-1 ring-slate-200 m-2 max-w-[180px] w-full p-5 h-24 flex justify-center items-center text-center font-semibold rounded-lg bg-white
 }
 
 .dashboard-links-style {

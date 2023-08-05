@@ -76,7 +76,7 @@ const AllAddedProducts = () => {
               <th>Name</th>
               <th>Price</th>
               <th>Image</th>
-              <th>Sizes</th>
+              <th>Status</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -94,11 +94,21 @@ const AllAddedProducts = () => {
                   />
                 </td>
                 <td>
-                  <div>
-                    {product?.product_info?.sizes?.map((item, index) => (
-                      <span key={index}>{" " + item},</span>
-                    ))}
-                  </div>
+                  {product.status === "pending" ? (
+                    <button className="ex-btn bg-info">Pending</button>
+                  ) : product.status === "checked" ? (
+                    <button className="ex-btn bg-accent">Checked</button>
+                  ) : product.status === "rejected" ? (
+                    <button className="ex-btn bg-error">Rejected</button>
+                  ) : product.status === "adminRejected" ? (
+                    <button className="ex-btn bg-error">Admin Rejected</button>
+                  ) : product.status === "approved" ? (
+                    <button className="ex-btn bg-green-800 text-white">
+                      Active
+                    </button>
+                  ) : (
+                    ""
+                  )}
                 </td>
                 <td>
                   <div className="flex gap-3 items-center">

@@ -26,10 +26,10 @@ const RejectedProducts = () => {
       },
     });
   //correction done
-  const handleCorrectionDone = async id => {
+  const handleCorrectionDone = async (id, status) => {
     try {
       const res = await axiosSecure.post(
-        `correction-done?email=${user.email}&&id=${id}`
+        `correction-done?email=${user.email}&&id=${id}&&status=${status}`
       );
       if (res.data.matchedCount > 0) {
         rejectedProductRefresh();
@@ -54,7 +54,8 @@ const RejectedProducts = () => {
                 <th></th>
                 <th>Product name</th>
                 <th>Image</th>
-                <th>Rejected staff</th>
+                <th>Rejected Employee</th>
+                <th>Employee type</th>
                 <th>Reason</th>
                 <th>Edit</th>
                 <th>Correction done</th>
@@ -72,9 +73,26 @@ const RejectedProducts = () => {
                       className="w-10 h-10"
                     />
                   </td>
-                  <td>{item.rejected_by.staffEmail}</td>
+                  <td>
+                    {item.status === "rejected"
+                      ? item?.rejected_by?.staffEmail
+                      : item?.rejected_admin?.adminEmail}
+                  </td>
+                  <td>
+                    {item.status === "rejected" ? (
+                      <button className="ex-btn bg-primary text-white">
+                        Staff
+                      </button>
+                    ) : (
+                      <button className="ex-btn bg-secondary text-white">
+                        Admin
+                      </button>
+                    )}
+                  </td>
                   <td className="text-red-700 font-bold">
-                    {item.rejected_reason}
+                    {item.status === "rejected"
+                      ? item?.rejected_reason
+                      : item?.admin_rejected_reason}
                   </td>
                   <td>
                     <Link
@@ -86,7 +104,9 @@ const RejectedProducts = () => {
                   </td>
                   <td>
                     <button
-                      onClick={() => handleCorrectionDone(item._id)}
+                      onClick={() =>
+                        handleCorrectionDone(item._id, item.status)
+                      }
                       title="Correction done"
                     >
                       <TiInputChecked className="w-7 h-7" />

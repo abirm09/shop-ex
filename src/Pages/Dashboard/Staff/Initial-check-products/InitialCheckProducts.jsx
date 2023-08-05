@@ -8,6 +8,7 @@ import { useRef, useState } from "react";
 import loadingAnim from "../../../../assets/loading/loading-anim-2.json";
 import Lottie from "lottie-react";
 import { Toaster, toast } from "react-hot-toast";
+import ProductViewOnModal from "../../../../components/ProjuctViewOnModal/ProductViewOnModal";
 
 const InitialCheckProducts = () => {
   const rejectReason = useRef();
@@ -112,13 +113,13 @@ const InitialCheckProducts = () => {
                   className={`${index % 2 === 1 ? "bg-base-200" : ""}`}
                 >
                   <td>{index + 1}</td>
-                  <td>{product.product_info.name}</td>
+                  <td>{product?.product_info?.name}</td>
                   <td>{product?.seller_info?.email}</td>
                   <td>
                     <img
                       className="w-14 h-14"
-                      src={product.product_info.images[0]}
-                      alt={product.product_info.name}
+                      src={product?.product_info?.images[0]}
+                      alt={product?.product_info?.name}
                     />
                   </td>
                   <td>
@@ -144,11 +145,8 @@ const InitialCheckProducts = () => {
         <div className="modal-box max-w-[95%] min-h-[90vh] h-full">
           {!singleProductLoading ? (
             <div className="w-full h-full overflow-y-scroll flex flex-col">
-              <h3 className="font-bold text-lg font-inter">
-                {currentProduct?.product_info?.name}
-              </h3>
-              <p className="py-4">This modal works with a hidden checkbox!</p>
-              <div className=" mt-auto flex items-center justify-end gap-2">
+              <ProductViewOnModal currentProduct={currentProduct} />
+              <div className="mt-auto flex items-center justify-end gap-2">
                 <label
                   className="ex-btn bg-error"
                   htmlFor="reject_reason_modal"
@@ -183,8 +181,6 @@ const InitialCheckProducts = () => {
         </div>
       </div>
       {/* modal 2 */}
-
-      {/* Put this part before </body> tag */}
       <input
         type="checkbox"
         id="reject_reason_modal"

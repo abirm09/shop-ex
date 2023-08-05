@@ -20,13 +20,13 @@ const AdminInfo = ({ user, axiosSecure }) => {
         <h2>Total Products : {adminInfoCount?.totalProducts}</h2>
       </div>
       <div className="dashboard-info-box">
-        <h2>Total Products : {adminInfoCount?.pendingApproval}</h2>
+        <h2>Pending for approval : {adminInfoCount?.pendingApproval}</h2>
       </div>
       <div className="dashboard-info-box">
-        <h2>Total Products : {adminInfoCount?.approveProducts}</h2>
+        <h2>Approved products : {adminInfoCount?.approveProducts}</h2>
       </div>
       <div className="dashboard-info-box">
-        <h2>Total Products : {adminInfoCount?.rejectedProducts}</h2>
+        <h2>Admin rejected products : {adminInfoCount?.rejectedProducts}</h2>
       </div>
     </>
   );

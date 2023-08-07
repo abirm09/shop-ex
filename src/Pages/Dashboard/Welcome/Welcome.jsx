@@ -21,7 +21,7 @@ const Welcome = () => {
       </Helmet>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-10 items-center">
-        <div className="col-span-1 ring-1 bg-slate-50 ring-slate-200 m-2 grid grid-cols-2 rounded-md py-5 shadow-md">
+        <div className="col-span-1 ring-1 bg-slate-50 ring-slate-200 m-2 grid grid-cols-2 rounded-md pt-5 shadow-md">
           <div className="col-span-2 text-center mb-2">
             <img
               className="rounded-full w-14 h-14 object-cover mx-auto"

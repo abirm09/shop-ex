@@ -7,6 +7,7 @@ import { useState } from "react";
 import ProductViewOnModal from "../../../../components/ProjuctViewOnModal/ProductViewOnModal";
 import { useRef } from "react";
 import { Toaster, toast } from "react-hot-toast";
+import BackButton from "../../../../components/BackButton/BackButton";
 
 const ApproveProducts = () => {
   const closeBtn = useRef();
@@ -76,6 +77,7 @@ const ApproveProducts = () => {
       <Helmet>
         <title>Approve Product | Shop-Ex</title>
       </Helmet>
+      <BackButton />
       <h2 className="section-title">Pending for approval</h2>
       {checkedProducts.length ? (
         <>

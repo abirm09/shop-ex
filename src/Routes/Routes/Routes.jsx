@@ -19,6 +19,8 @@ import EditProduct from "../../Pages/Dashboard/Seller/EditProduct/EditProduct";
 import InitialCheckProducts from "../../Pages/Dashboard/Staff/Initial-check-products/InitialCheckProducts";
 import RejectedProducts from "../../Pages/Dashboard/Seller/RejectedProducts/RejectedProducts";
 import ApproveProducts from "../../Pages/Dashboard/Admin/ApproveProducts/ApproveProducts";
+import ApproveSellerRequest from "../../Pages/Dashboard/Admin/ApproveSellerRequest/ApproveSellerRequest";
+import AddAStaff from "../../Pages/Dashboard/Admin/AddAStaff/AddAStaff";
 
 const routes = createBrowserRouter([
   {
@@ -107,6 +109,14 @@ const routes = createBrowserRouter([
       {
         path: "approve-product",
         element: <ApproveProducts />,
+      },
+      {
+        path: "approve-seller-req",
+        element: <ApproveSellerRequest />,
+      },
+      {
+        path: "add-a-staff",
+        element: <AddAStaff />,
       },
     ],
   },

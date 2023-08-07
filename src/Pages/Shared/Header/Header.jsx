@@ -156,10 +156,7 @@ const Header = () => {
                 ) : (
                   // end
                   <>
-                    <Link
-                      to="login"
-                      className="btn ring-1 ring-slate-300 normal-case btn-sm"
-                    >
+                    <Link to="login" className="ex-btn-primary">
                       Login
                     </Link>
                   </>

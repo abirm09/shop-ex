@@ -112,7 +112,17 @@ const Setting = () => {
           )}
           <h3 className="font-bold text-lg">Change your profile picture.</h3>
           <div className="mt-5">
-            <p className="font-semibold">Set image ratio 1:1</p>
+            {selectedImage ? (
+              <>
+                <img
+                  src={selectedImage}
+                  alt="Selected image"
+                  className="max-w-[150px] w-full aspect-square mt-5 mx-auto object-cover"
+                />
+              </>
+            ) : (
+              ""
+            )}
             <form onSubmit={handleUpdate}>
               <input
                 type="file"
@@ -120,30 +130,19 @@ const Setting = () => {
                 className="file-input w-full max-w-xs mt-3"
                 name="image"
               />
-              <button className="btn btn-xs ring-1 ring-slate-300 block mt-5">
-                Update
-              </button>
+              <div className="flex justify-end items-end gap-5">
+                <button className="ex-btn bg-base-200">Update</button>
+                <div className="modal-action">
+                  <label
+                    htmlFor="my_modal_6"
+                    className="ex-btn bg-error"
+                    ref={myRef}
+                  >
+                    Cancel
+                  </label>
+                </div>
+              </div>
             </form>
-            {selectedImage ? (
-              <>
-                <img
-                  src={selectedImage}
-                  alt="Selected image"
-                  className="max-w-[150px] w-full aspect-square mt-5 mx-auto"
-                />
-              </>
-            ) : (
-              ""
-            )}
-          </div>
-          <div className="modal-action">
-            <label
-              htmlFor="my_modal_6"
-              className="btn btn-xs btn-error ring-1 ring-rose-700"
-              ref={myRef}
-            >
-              Cancel
-            </label>
           </div>
         </div>
       </div>

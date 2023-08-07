@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "name": "Fashion",
+    "image": "https://i.ibb.co/6ww998p/spyglass-2472780.png"
+  },
+  {
+    "id": 2,
+    "name": "Men",
+    "image": "https://i.ibb.co/5MWxY9j/young-man-4440953.png"
+  },
+  {
+    "id": 3,
+    "name": "Women",
+    "image": "https://i.ibb.co/1MR2G9L/woman-3278793.png"
+  },
+  {
+    "id": 4,
+    "name": "Electronic",
+    "image": "https://i.ibb.co/zJSwCwX/laptop-7943189.png"
+  },
+  {
+    "id": 5,
+    "name": "Home and Cleaning",
+    "image": "https://i.ibb.co/WBVtm0p/house-2641242.png"
+  }
+]

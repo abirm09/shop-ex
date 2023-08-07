@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+/* common */
+* {
+  scroll-behavior: smooth;
+}
 
 /* scrollbar design */
 /* width */
@@ -72,5 +76,9 @@
 }
 
 .section-title {
-  @apply font-concert text-2xl font-bold text-center ex-text-gradient
+  @apply font-concert text-3xl font-bold text-center ex-text-gradient
+}
+
+.section-sub-tittle {
+  @apply font-inter text-base font-semibold text-center my-2
 }

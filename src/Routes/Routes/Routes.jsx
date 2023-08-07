@@ -21,6 +21,8 @@ import RejectedProducts from "../../Pages/Dashboard/Seller/RejectedProducts/Reje
 import ApproveProducts from "../../Pages/Dashboard/Admin/ApproveProducts/ApproveProducts";
 import ApproveSellerRequest from "../../Pages/Dashboard/Admin/ApproveSellerRequest/ApproveSellerRequest";
 import AddAStaff from "../../Pages/Dashboard/Admin/AddAStaff/AddAStaff";
+import { BaseUrl } from "../../Provider/ShopExProvider/ShopExProvider";
+import SingleProductDetails from "../../Pages/Shared/SingleProductDetails/SingleProductDetails";
 
 const routes = createBrowserRouter([
   {
@@ -31,6 +33,7 @@ const routes = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+        loader: () => fetch(`${BaseUrl}/random-products/12`),
       },
       {
         path: "/category",
@@ -43,6 +46,10 @@ const routes = createBrowserRouter([
       {
         path: "register",
         element: <Register />,
+      },
+      {
+        path: "product-details/:id",
+        element: <SingleProductDetails />,
       },
     ],
   },

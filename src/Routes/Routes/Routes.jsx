@@ -50,6 +50,8 @@ const routes = createBrowserRouter([
       {
         path: "product-details/:id",
         element: <SingleProductDetails />,
+        loader: ({ params }) =>
+          fetch(`${BaseUrl}/single-product?id=${params.id}`),
       },
     ],
   },

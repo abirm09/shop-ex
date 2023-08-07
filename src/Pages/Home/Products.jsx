@@ -2,7 +2,6 @@ import { Link, useLoaderData } from "react-router-dom";
 
 const Products = () => {
   const randomProducts = useLoaderData();
-  console.log(randomProducts);
   return (
     <>
       <div className="ex-container mt-20" id="products">

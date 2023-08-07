@@ -9,7 +9,7 @@ import {
 } from "firebase/auth";
 import app from "../../Util/Firebase/Firebase.config";
 export const ExContext = createContext();
-export const BaseUrl = "https://shop-ex-server-abirm09.vercel.app";
+export const BaseUrl = "http://localhost:5000";
 const ShopExProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);

@@ -42,7 +42,7 @@ const InitialCheckProducts = () => {
     setSingleProductLoading(true);
     try {
       const res = await axiosSecure.get(`single-product?id=${id}`);
-      setCurrentProduct(res.data.result);
+      setCurrentProduct(res.data);
       setSingleProductLoading(false);
     } catch (err) {
       setSingleProductLoading(false);
